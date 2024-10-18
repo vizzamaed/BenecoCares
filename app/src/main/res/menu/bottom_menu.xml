@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/bottom_home"
+        android:title="Home"
+        android:icon="@drawable/baseline_cottage_24"/>
+    <item
+        android:id="@+id/bottom_report"
+        android:title="Report"
+        android:icon="@drawable/baseline_warning_amber_24"/>
+    <item
+        android:id="@+id/bottom_calculator"
+        android:title="Calculator"
+        android:icon="@drawable/baseline_calculate_24"/>
+</menu>

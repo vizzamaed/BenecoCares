@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ReportFragment">
+
+    <!-- Title Frame -->
+    <FrameLayout
+        android:id="@+id/titleFrame"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/green">
+
+        <TextView
+            android:id="@+id/HOME"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Report Concerns"
+            android:textColor="@color/white"
+            android:textSize="24sp" /> <!-- Changed to "sp" for text size -->
+    </FrameLayout>
+
+    <!-- Power Outage Frame -->
+    <FrameLayout
+        android:id="@+id/powerOutageFrame"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@color/gray"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginTop="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/powerOutageBtn"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@color/green"
+                android:src="@drawable/poweroutage"
+                android:scaleType="fitCenter"
+                android:contentDescription="Power Outage Icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Power Outage"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- Equipment Failure Frame -->
+    <FrameLayout
+        android:id="@+id/equipmentFailureFrame"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@color/gray"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginTop="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/equipmentFailureBtn"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@color/green"
+                android:src="@drawable/equipment_failure"
+                android:scaleType="fitCenter"
+                android:contentDescription="Equipment Failure Icon" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Electricity Equipment Failure"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- Damaged Powerline or Pole Frame -->
+    <FrameLayout
+        android:id="@+id/damagedPowerlinePoleFrame"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:background="@color/gray"
+        android:clickable="true"
+        android:focusable="true"
+        android:layout_marginTop="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/damagedPowerlinePoleBtn"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:background="@color/green"
+                android:contentDescription="Damaged Powerline or Pole Icon"
+                android:scaleType="fitCenter"
+                android:src="@drawable/powerline2" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Damaged Powerline or Pole"
+                android:textColor="@color/black"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </FrameLayout>
+
+</LinearLayout>
