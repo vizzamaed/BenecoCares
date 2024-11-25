@@ -2,4 +2,22 @@
     <string name="app_name">BenecoCares</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string-array name="municipalities">
+        <item>Atok</item>
+        <item>Baguio</item>
+        <item>Bakun</item>
+        <item>Bokod</item>
+        <item>Buguias</item>
+        <item>Itogon</item>
+        <item>Kabayan</item>
+        <item>Kapangan</item>
+        <item>Kibungan</item>
+        <item>La Trinidad</item>
+        <item>Mankayan</item>
+        <item>Sablan</item>
+        <item>Tuba</item>
+        <item>Tublay</item>
+    </string-array>
+
 </resources>
