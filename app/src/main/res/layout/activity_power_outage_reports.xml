@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    
+
     <TextView
         android:id="@+id/ReportForm"
         android:layout_width="match_parent"
@@ -51,7 +51,7 @@
                     android:layout_height="wrap_content"
                     android:hint="Complete Address with landmark">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <EditText
                         android:id="@+id/locationTextBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
                     android:layout_height="wrap_content"
                     android:hint="00:00">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <EditText
                         android:id="@+id/timeTextBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -95,9 +95,9 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Electrical Equipment Failure">
+                    android:hint="Reason for Outage">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <EditText
                         android:id="@+id/descriptionTextBox"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
@@ -107,22 +107,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
-                    android:id="@+id/addImageBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_gravity="start"
-                    android:backgroundTint="@color/darkgray"
-                    android:padding="10dp"
-                    android:text="Add Image"
-                    android:textSize="18sp"
-                    android:textColor="@color/white"
-                    android:elevation="2dp"
-                    app:cornerRadius="10dp"
-                    android:drawableLeft="@drawable/baseline_add_24"/>
-
-                <Button
-                    android:id="@+id/submitFailureBtn"
+                    android:id="@+id/submitOutageBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
@@ -134,7 +119,6 @@
                     android:textColor="@color/white"
                     android:elevation="2dp"
                     app:cornerRadius="10dp" />
-
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </ScrollView>

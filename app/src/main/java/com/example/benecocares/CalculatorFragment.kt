@@ -5,55 +5,89 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
+import android.widget.Button
+import com.google.android.material.textfield.TextInputEditText
+import com.example.benecocares.R.id.autoCompleteTextViewAppliances
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [CalculatorFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class CalculatorFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_calculator, container, false)
-    }
+        val view = inflater.inflate(R.layout.fragment_calculator, container, false)
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CalculatorFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CalculatorFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
+        val appliances = resources.getStringArray(R.array.appliances)
+        val wattages = resources.getStringArray(R.array.appliances_wattages)
+
+        // Create a mapping from appliances to wattages
+        val applianceWattages = appliances.zip(wattages.map { it.toInt() }).toMap()
+
+        val arrayAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, appliances)
+        val autoCompleteTextViewCalculator = view.findViewById<AutoCompleteTextView>(autoCompleteTextViewAppliances)
+        autoCompleteTextViewCalculator.setAdapter(arrayAdapter)
+
+        val wattageTextBox = view.findViewById<TextInputEditText>(R.id.WattageTextBox)
+
+        // Set listener to update wattage when appliance is selected
+        autoCompleteTextViewCalculator.setOnItemClickListener { _, _, position, _ ->
+            val selectedAppliance = appliances[position]
+            val wattage = applianceWattages[selectedAppliance]
+            wattageTextBox.setText(wattage.toString())
+        }
+
+
+        val monthlyBillTextBox = view.findViewById<TextInputEditText>(R.id.monthlyBillTextBox)
+        val hoursTextBox = view.findViewById<TextInputEditText>(R.id.HoursTextBox)
+        val daysTextBox = view.findViewById<TextInputEditText>(R.id.DaysTextBox)
+        val weeksTextBox = view.findViewById<TextInputEditText>(R.id.WeeksTextBox)
+
+        val hourlyTextBox = view.findViewById<TextInputEditText>(R.id.Hourly)
+        val dailyTextBox = view.findViewById<TextInputEditText>(R.id.Daily)
+        val weeklyTextBox = view.findViewById<TextInputEditText>(R.id.Weekly)
+        val monthlyTextBox = view.findViewById<TextInputEditText>(R.id.Monthly)
+
+        val calculateBtn = view.findViewById<Button>(R.id.calculateBtn)
+        val resetBtn = view.findViewById<Button>(R.id.resetBtn)
+
+        calculateBtn.setOnClickListener {
+            //user inputs
+            val wattage = wattageTextBox.text.toString().toDoubleOrNull() ?: 0.0
+            val hours = hoursTextBox.text.toString().toDoubleOrNull() ?: 0.0
+            val days = daysTextBox.text.toString().toDoubleOrNull() ?: 0.0
+            val weeks = weeksTextBox.text.toString().toDoubleOrNull() ?: 0.0
+
+            // Calculate power consumption (kWh)
+            val hourly = wattage / 1000 * hours
+            val daily = hourly * days
+            val weekly = daily * weeks
+            val monthly = daily * 30 // Assume 30 days in a month
+
+            // Display results
+            hourlyTextBox.setText(String.format("%.2f", hourly))
+            dailyTextBox.setText(String.format("%.2f", daily))
+            weeklyTextBox.setText(String.format("%.2f", weekly))
+            monthlyTextBox.setText(String.format("%.2f", monthly))
+        }
+
+        resetBtn.setOnClickListener {
+            // Clear all
+            wattageTextBox.text?.clear()
+            hoursTextBox.text?.clear()
+            daysTextBox.text?.clear()
+            weeksTextBox.text?.clear()
+            hourlyTextBox.setText("")
+            dailyTextBox.setText("")
+            weeklyTextBox.setText("")
+            monthlyTextBox.setText("")
+
+            autoCompleteTextViewCalculator.setText("")
+
+            monthlyBillTextBox?.setText("")
+        }
+
+        return view
     }
 }

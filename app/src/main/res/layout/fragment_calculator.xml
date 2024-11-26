@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
 
+    <!-- Title Frame -->
     <FrameLayout
         android:id="@+id/titleFrame"
         android:layout_width="match_parent"
@@ -26,109 +27,40 @@
             android:textSize="24sp" />
     </FrameLayout>
 
-    <LinearLayout
-        android:id="@+id/CalcContent"
+    <!-- ScrollView to make content scrollable -->
+    <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintTop_toBottomOf="@id/titleFrame"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Monthly Bill Amount"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Value">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/monthlyBillTextBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="40dp"
-                android:padding="4dp"
-                android:inputType="text"
-                android:textColorHint="@color/black" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Appliance"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Choose Appliance">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/ApplianceTextBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="40dp"
-                android:padding="4dp"
-                android:inputType="text"
-                android:textColorHint="@color/black" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Wattage"
-            android:textColor="@color/black"
-            android:textSize="14sp" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Value">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/WattageTextBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="40dp"
-                android:padding="4dp"
-                android:inputType="text"
-                android:textColorHint="@color/black" />
-        </com.google.android.material.textfield.TextInputLayout>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
+            android:id="@+id/CalcContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="3dp">
+            android:orientation="vertical"
+            android:padding="16dp">
 
+            <!-- Monthly Bill Amount -->
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Hours Used"
+                android:text="Monthly Bill Amount"
                 android:textColor="@color/black"
-                android:textSize="14sp"
-                android:layout_marginEnd="12dp"
-                android:layout_gravity="center"/>
+                android:textSize="14sp" />
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="100dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint=""
-                android:layout_marginStart="12dp">
+                android:hint="Value">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/HoursTextBox"
+                    android:id="@+id/monthlyBillTextBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:minHeight="40dp"
@@ -136,32 +68,44 @@
                     android:inputType="text"
                     android:textColorHint="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="3dp">
-
+            <!-- Appliance -->
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Days Used"
+                android:text="Appliance"
                 android:textColor="@color/black"
-                android:textSize="14sp"
-                android:layout_marginEnd="12dp"
-                android:layout_gravity="center"/>
+                android:textSize="14sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <AutoCompleteTextView
+                    android:id="@+id/autoCompleteTextViewAppliances"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Choose Appliance" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Wattage -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Wattage"
+                android:textColor="@color/black"
+                android:textSize="14sp"/>
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="100dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint=""
-                android:layout_marginStart="18dp">
+                android:hint="Value">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/DaysTextBox"
+                    android:id="@+id/WattageTextBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:minHeight="40dp"
@@ -169,237 +113,306 @@
                     android:inputType="text"
                     android:textColorHint="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="3dp">
-
-            <TextView
-                android:layout_width="wrap_content"
+            <!-- Hours Used -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Weeks Used"
-                android:textColor="@color/black"
-                android:textSize="14sp"
-                android:layout_marginEnd="12dp"
-                android:layout_gravity="center"/>
+                android:orientation="horizontal"
+                android:layout_marginTop="3dp">
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="100dp"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hours Used"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_gravity="center"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:hint="">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/HoursTextBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="40dp"
+                        android:padding="4dp"
+                        android:inputType="text"
+                        android:textColorHint="@color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <!-- Days Used -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint=""
-                android:layout_marginStart="8dp">
+                android:orientation="horizontal"
+                android:layout_marginTop="3dp">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/WeeksTextBox"
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Days Used"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_gravity="center"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:hint="">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/DaysTextBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="40dp"
+                        android:padding="4dp"
+                        android:inputType="text"
+                        android:textColorHint="@color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <!-- Weeks Used -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="3dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Weeks Used"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_gravity="center"/>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:hint="">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/WeeksTextBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:minHeight="40dp"
+                        android:padding="4dp"
+                        android:inputType="text"
+                        android:textColorHint="@color/black" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
+            <!-- Reset and Calculate Buttons -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp"
+                android:gravity="center">
+
+                <Button
+                    android:id="@+id/resetBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:backgroundTint="@color/green"
+                    android:padding="10dp"
+                    android:text="Reset"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:elevation="2dp"
+                    app:cornerRadius="10dp"/>
+
+                <Button
+                    android:id="@+id/calculateBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/green"
+                    android:padding="10dp"
+                    android:text="Calculate"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:elevation="2dp"
+                    app:cornerRadius="10dp" />
+            </LinearLayout>
+
+            <!-- Power Consumption Frame (Included in ScrollView) -->
+            <FrameLayout
+                android:id="@+id/powerConsumptionFrame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/green"
+                android:padding="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/CalcContent"
+                app:layout_constraintVertical_bias="0.0"
+                tools:layout_editor_absoluteX="0dp">
+
+                <TextView
+                    android:id="@+id/PowerConsumptionTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|center_horizontal"
+                    android:text="Power Consumption"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:minHeight="40dp"
-                    android:padding="4dp"
-                    android:inputType="text"
-                    android:textColorHint="@color/black" />
-            </com.google.android.material.textfield.TextInputLayout>
-        </LinearLayout>
+                    android:layout_gravity="center|top"
+                    android:layout_marginTop="30dp"
+                    android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="5dp"
-            android:gravity="center">
-
-            <Button
-                android:id="@+id/resetBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:backgroundTint="@color/green"
-                android:padding="10dp"
-                android:text="Reset"
-                android:textSize="18sp"
-                android:textColor="@color/white"
-                android:elevation="2dp"
-                app:cornerRadius="10dp"/>
-
-            <Button
-                android:id="@+id/calculateBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/green"
-                android:padding="10dp"
-                android:text="Calculate"
-                android:textSize="18sp"
-                android:textColor="@color/white"
-                android:elevation="2dp"
-                app:cornerRadius="10dp" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <FrameLayout
-        android:id="@+id/powerConsumptionFrame"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/green"
-        android:padding="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CalcContent"
-        app:layout_constraintVertical_bias="0.0"
-        tools:layout_editor_absoluteX="0dp">
-
-        <TextView
-            android:id="@+id/PowerConsumptionTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="top|center_horizontal"
-            android:text="Power Consumption"
-            android:textColor="@color/white"
-            android:textSize="18sp" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|top"
-            android:layout_marginTop="30dp"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="12dp"
-                    android:text="Hourly"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="15dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/Hourly"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:inputType="text"
-                        android:minHeight="30dp"
-                        android:padding="4dp"
-                        android:textColorHint="@color/black" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
+                        android:layout_marginTop="3dp"
+                        android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="12dp"
+                            android:text="Hourly"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="12dp"
-                    android:text="Daily"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="25dp">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/Hourly"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:inputType="text"
+                                android:minHeight="30dp"
+                                android:padding="4dp"
+                                android:textColorHint="@color/black" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/Daily"
-                        android:layout_width="150dp"
-                        android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:inputType="text"
-                        android:minHeight="30dp"
-                        android:padding="4dp"
-                        android:textColorHint="@color/black" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="14dp"
-                    android:text="Weekly"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/Weekly"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:inputType="text"
-                        android:minHeight="30dp"
-                        android:padding="4dp"
-                        android:textColorHint="@color/black" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="12dp"
+                            android:text="Daily"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="12dp"
-                    android:text="Monthly"
-                    android:textColor="@color/white"
-                    android:textSize="14sp" />
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="25dp">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="150dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="6dp">
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/Daily"
+                                android:layout_width="150dp"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:inputType="text"
+                                android:minHeight="30dp"
+                                android:padding="4dp"
+                                android:textColorHint="@color/black" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/Monthly"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="@color/white"
-                        android:inputType="text"
-                        android:minHeight="30dp"
-                        android:padding="4dp"
-                        android:textColorHint="@color/black" />
-                </com.google.android.material.textfield.TextInputLayout>
-            </LinearLayout>
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="14dp"
+                            android:text="Weekly"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/Weekly"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:inputType="text"
+                                android:minHeight="30dp"
+                                android:padding="4dp"
+                                android:textColorHint="@color/black" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal"
+                        android:layout_marginBottom="100dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginEnd="12dp"
+                            android:text="Monthly"
+                            android:textColor="@color/white"
+                            android:textSize="14sp" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/Monthly"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@color/white"
+                                android:inputType="text"
+                                android:minHeight="30dp"
+                                android:padding="4dp"
+                                android:textColorHint="@color/black" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </FrameLayout>
 
         </LinearLayout>
-
-    </FrameLayout>
-
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

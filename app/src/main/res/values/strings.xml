@@ -20,4 +20,26 @@
         <item>Tublay</item>
     </string-array>
 
+    <string-array name="appliances">
+        <item>Air Fryer (4.2L)</item>
+        <item>Air Fryer (5.6L)</item>
+        <item>Air Circulator (12 inches)</item>
+        <item>Air Circulator (16 inches)</item>
+        <item>Desktop Computer</item>
+        <item>TV (32 inches)</item>
+        <item>TV (50 inches)</item>
+        <item>TV (65 inches)</item>
+    </string-array>
+
+    <string-array name="appliances_wattages">
+        <item>1400</item>
+        <item>1700</item>
+        <item>50</item>
+        <item>75</item>
+        <item>300</item>
+        <item>50</item>
+        <item>120</item>
+        <item>200</item>
+    </string-array>
+
 </resources>

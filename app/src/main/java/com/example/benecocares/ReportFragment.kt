@@ -1,5 +1,6 @@
 package com.example.benecocares
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -26,8 +27,8 @@ class ReportFragment : Fragment() {
         val damagedPowerlinePoleBtn: ImageButton = view.findViewById(R.id.damagedPowerlinePoleBtn)
 
         powerOutageBtn.setOnClickListener {
-            val showPowerOutageBtn = powerOutageFragment()
-            showPowerOutageBtn.show((activity as AppCompatActivity).supportFragmentManager, "showPopUp")
+            val intent = Intent(activity, PowerOutageReports::class.java)
+            startActivity(intent)
         }
 
         equipmentFailureBtn.setOnClickListener {

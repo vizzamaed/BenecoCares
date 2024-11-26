@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "728874077551",
+    "project_id": "benecocares-277d7",
+    "storage_bucket": "benecocares-277d7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:728874077551:android:e34e8bc5775e08d71d6c9a",
+        "android_client_info": {
+          "package_name": "com.example.benecocares"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWoYUoFq0Q5AO6v_i-ORQ6xKrtffE0ko8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
