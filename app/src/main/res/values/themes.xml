@@ -20,5 +20,11 @@
         <item name="postSplashScreenTheme">@style/Base.Theme.BenecoCares</item>
     </style>
 
+    <style name="CustomTimePickerDialog" parent="Theme.MaterialComponents.DayNight.Dialog">
+        <item name="colorAccent">#056608</item> <!-- Clock hand -->
+        <item name="colorPrimary">#056608</item> <!-- Dialog buttons background -->
+        <item name="colorOnPrimary">#056608</item> <!-- Dialog buttons text color -->
+        <item name="colorPrimaryVariant">#056608</item> <!-- Highlight for selection -->
+    </style>
 
 </resources>

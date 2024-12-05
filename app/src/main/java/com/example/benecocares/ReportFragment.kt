@@ -5,9 +5,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageButton
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 
 class ReportFragment : Fragment() {
@@ -15,7 +13,7 @@ class ReportFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_report, container, false) // Ensure this matches the layout file name
+        return inflater.inflate(R.layout.fragment_report, container, false)
     }
 
 
@@ -31,14 +29,14 @@ class ReportFragment : Fragment() {
             startActivity(intent)
         }
 
-        equipmentFailureBtn.setOnClickListener {
-            val showequipmentFailureBtn = EquipmentFailureFragment()
-            showequipmentFailureBtn.show((activity as AppCompatActivity).supportFragmentManager, "showPopUp")
+        damagedPowerlinePoleBtn.setOnClickListener {
+            val intent = Intent(activity, DamagedPowerlineReports::class.java)
+            startActivity(intent)
         }
 
-        damagedPowerlinePoleBtn.setOnClickListener {
-            val damagedPowerlinePoleBtn = DamagedPowerLineFragment()
-            damagedPowerlinePoleBtn.show((activity as AppCompatActivity).supportFragmentManager, "showPopUp")
+        equipmentFailureBtn.setOnClickListener {
+            val intent = Intent(activity, EquipmentFailureReports::class.java)
+            startActivity(intent)
         }
 
     }

@@ -5,9 +5,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HomeFragment">
+    tools:context=".CalculatorFragment"
+    android:id="@+id/fragment_container">
 
-    <!-- Title Frame -->
     <FrameLayout
         android:id="@+id/titleFrame"
         android:layout_width="match_parent"
@@ -27,7 +27,6 @@
             android:textSize="24sp" />
     </FrameLayout>
 
-    <!-- ScrollView to make content scrollable -->
     <ScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
@@ -124,7 +123,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hours Used"
+                    android:text="Hours Used in a Day "
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:layout_marginEnd="12dp"
@@ -157,7 +156,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Days Used"
+                    android:text="Days Used in a Week "
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:layout_marginEnd="12dp"
@@ -190,7 +189,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Weeks Used"
+                    android:text="Weeks Used in a Month"
                     android:textColor="@color/black"
                     android:textSize="14sp"
                     android:layout_marginEnd="12dp"

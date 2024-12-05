@@ -12,22 +12,22 @@ import android.app.TimePickerDialog
 import java.util.Calendar
 
 
-class PowerOutageReports : AppCompatActivity() {
+class EquipmentFailureReports : AppCompatActivity() {
     private lateinit var etlocation: EditText
     private lateinit var ettime: EditText
     private lateinit var etdescription: EditText
-    private lateinit var submitOutageBtn: Button
+    private lateinit var submitFailureBtn: Button
 
     private val database = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_power_outage_reports)
+        setContentView(R.layout.activity_equipment_failure_reports)
 
         etlocation = findViewById(R.id.locationTextBox)
         ettime = findViewById(R.id.timeTextBox)
         etdescription = findViewById(R.id.descriptionTextBox)
-        submitOutageBtn = findViewById(R.id.submitOutageBtn)
+        submitFailureBtn = findViewById(R.id.submitFailureBtn)
 
         ettime.setOnClickListener {
             val calendar = Calendar.getInstance()
@@ -46,11 +46,11 @@ class PowerOutageReports : AppCompatActivity() {
                 currentHour,
                 currentMinute,
                 false
-                )
+            )
 
             timePicker.show()
         }
-        submitOutageBtn.setOnClickListener {
+        submitFailureBtn.setOnClickListener {
             val slocation = etlocation.text.toString().trim()
             val stime = ettime.text.toString().trim()
             val sdescription = etdescription.text.toString().trim()
@@ -60,7 +60,7 @@ class PowerOutageReports : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            val powerOutageReportsMap = hashMapOf(
+            val equipmentFailureReportsMap = hashMapOf(
                 "location" to slocation,
                 "time" to stime,
                 "description" to sdescription,
@@ -70,7 +70,7 @@ class PowerOutageReports : AppCompatActivity() {
 
             val documentId = System.currentTimeMillis().toString()
 
-            database.collection("Power Outage Reports").document(documentId).set(powerOutageReportsMap)
+            database.collection("Equipment Failure Reports").document(documentId).set(equipmentFailureReportsMap)
                 .addOnSuccessListener {
                     Toast.makeText(this, "Your report has been successfully submitted", Toast.LENGTH_SHORT).show()
                     etlocation.text.clear()

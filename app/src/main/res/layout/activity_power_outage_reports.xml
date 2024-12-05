@@ -24,12 +24,6 @@
         android:layout_weight="1"
         android:layout_marginTop="8dp">
 
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="12dp"
-            app:cardElevation="6dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -72,15 +66,18 @@
                     style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="00:00">
+                    android:hint="Select Time">
 
                     <EditText
                         android:id="@+id/timeTextBox"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:minHeight="48dp"
-                        android:inputType="text"
+                        android:inputType="none"
+                        android:focusable="false"
+                        android:focusableInTouchMode="false"
                         android:textColorHint="@color/black" />
+
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <TextView
@@ -120,6 +117,5 @@
                     android:elevation="2dp"
                     app:cornerRadius="10dp" />
             </LinearLayout>
-        </androidx.cardview.widget.CardView>
     </ScrollView>
 </LinearLayout>

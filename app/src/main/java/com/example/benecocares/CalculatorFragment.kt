@@ -22,7 +22,6 @@ class CalculatorFragment : Fragment() {
         val appliances = resources.getStringArray(R.array.appliances)
         val wattages = resources.getStringArray(R.array.appliances_wattages)
 
-        // Create a mapping from appliances to wattages
         val applianceWattages = appliances.zip(wattages.map { it.toInt() }).toMap()
 
         val arrayAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_dropdown_item_1line, appliances)
@@ -31,7 +30,6 @@ class CalculatorFragment : Fragment() {
 
         val wattageTextBox = view.findViewById<TextInputEditText>(R.id.WattageTextBox)
 
-        // Set listener to update wattage when appliance is selected
         autoCompleteTextViewCalculator.setOnItemClickListener { _, _, position, _ ->
             val selectedAppliance = appliances[position]
             val wattage = applianceWattages[selectedAppliance]
@@ -63,7 +61,7 @@ class CalculatorFragment : Fragment() {
             val hourly = wattage / 1000 * hours
             val daily = hourly * days
             val weekly = daily * weeks
-            val monthly = daily * 30 // Assume 30 days in a month
+            val monthly = daily * 30
 
             // Display results
             hourlyTextBox.setText(String.format("%.2f", hourly))
