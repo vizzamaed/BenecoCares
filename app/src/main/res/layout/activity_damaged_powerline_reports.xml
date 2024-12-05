@@ -76,7 +76,8 @@
                     android:inputType="none"
                     android:focusable="false"
                     android:focusableInTouchMode="false"
-                    android:textColorHint="@color/black" />
+                    android:textColorHint="@color/black"
+                    android:clickable="true"/>
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -93,7 +94,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Damaged Powerline or Post">
+                android:hint="Description">
 
                 <EditText
                     android:id="@+id/descriptionTextBox"
@@ -103,6 +104,30 @@
                     android:inputType="text"
                     android:textColorHint="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/addImageBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_gravity="start"
+                android:backgroundTint="@color/darkgray"
+                android:padding="10dp"
+                android:text="Add Image"
+                android:textSize="18sp"
+                android:textColor="@color/white"
+                android:elevation="2dp"
+                app:cornerRadius="10dp"
+                android:drawableLeft="@drawable/baseline_add_24"/>
+
+            <ImageView
+                android:id="@+id/selectedImageView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="16dp"
+                android:contentDescription="Image"
+                android:visibility="gone"
+                android:scaleType="centerCrop" />
 
 
             <Button

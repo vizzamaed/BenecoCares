@@ -9,6 +9,13 @@ import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import android.app.TimePickerDialog
+import android.content.Intent
+import android.graphics.Bitmap
+import android.net.Uri
+import android.provider.MediaStore
+import android.view.View
+import android.widget.ImageView
+import java.io.IOException
 import java.util.Calendar
 
 
@@ -17,6 +24,9 @@ class DamagedPowerlineReports : AppCompatActivity() {
     private lateinit var ettime: EditText
     private lateinit var etdescription: EditText
     private lateinit var submitDamagedBtn: Button
+    private lateinit var addImageBtn: Button
+    private lateinit var selectedImageView: ImageView
+    private var selectedImageUri: Uri? = null
 
     private val database = Firebase.firestore
 
@@ -28,6 +38,8 @@ class DamagedPowerlineReports : AppCompatActivity() {
         ettime = findViewById(R.id.timeTextBox)
         etdescription = findViewById(R.id.descriptionTextBox)
         submitDamagedBtn = findViewById(R.id.submitDamagedBtn)
+        addImageBtn = findViewById(R.id.addImageBtn)
+        selectedImageView = findViewById(R.id.selectedImageView)
 
         ettime.setOnClickListener {
             val calendar = Calendar.getInstance()
@@ -50,6 +62,12 @@ class DamagedPowerlineReports : AppCompatActivity() {
 
             timePicker.show()
         }
+
+        addImageBtn.setOnClickListener {
+            val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+            startActivityForResult(intent, IMAGE_PICK_REQUEST_CODE)
+        }
+
         submitDamagedBtn.setOnClickListener {
             val slocation = etlocation.text.toString().trim()
             val stime = ettime.text.toString().trim()
@@ -67,6 +85,18 @@ class DamagedPowerlineReports : AppCompatActivity() {
                 "submittedAt" to FieldValue.serverTimestamp()
             )
 
+            if (selectedImageUri == null) {
+                Toast.makeText(this, "Report submitted without photo", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "Report submitted with photo", Toast.LENGTH_SHORT).show()
+            }
+
+            etlocation.text.clear()
+            ettime.text.clear()
+            etdescription.text.clear()
+            selectedImageView.visibility = View.GONE
+            selectedImageUri = null
+
 
             val documentId = System.currentTimeMillis().toString()
 
@@ -81,6 +111,25 @@ class DamagedPowerlineReports : AppCompatActivity() {
                     Toast.makeText(this, "Failed to submit your report", Toast.LENGTH_SHORT).show()
                 }
         }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == IMAGE_PICK_REQUEST_CODE && resultCode == RESULT_OK && data != null) {
+            selectedImageUri = data.data
+            try {
+                val bitmap: Bitmap = MediaStore.Images.Media.getBitmap(this.contentResolver, selectedImageUri)
+                selectedImageView.setImageBitmap(bitmap)
+                selectedImageView.visibility = View.VISIBLE
+            } catch (e: IOException) {
+                e.printStackTrace()
+                Toast.makeText(this, "Failed to load image", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    companion object {
+        private const val IMAGE_PICK_REQUEST_CODE = 100
     }
 
 }
