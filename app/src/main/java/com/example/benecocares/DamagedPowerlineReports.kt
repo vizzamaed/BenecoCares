@@ -85,12 +85,6 @@ class DamagedPowerlineReports : AppCompatActivity() {
                 "submittedAt" to FieldValue.serverTimestamp()
             )
 
-            if (selectedImageUri == null) {
-                Toast.makeText(this, "Report submitted without photo", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(this, "Report submitted with photo", Toast.LENGTH_SHORT).show()
-            }
-
             etlocation.text.clear()
             ettime.text.clear()
             etdescription.text.clear()
