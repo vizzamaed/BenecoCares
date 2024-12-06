@@ -57,17 +57,19 @@ class CalculatorFragment : Fragment() {
             val days = daysTextBox.text.toString().toDoubleOrNull() ?: 0.0
             val weeks = weeksTextBox.text.toString().toDoubleOrNull() ?: 0.0
 
+            val benecoRate = 10.3651
+
             // Calculate power consumption (kWh)
-            val hourly = wattage / 1000 * hours
+            val hourly = (wattage / 1000 * hours) * benecoRate
             val daily = hourly * days
             val weekly = daily * weeks
             val monthly = daily * 30
 
             // Display results
-            hourlyTextBox.setText(String.format("%.2f", hourly))
-            dailyTextBox.setText(String.format("%.2f", daily))
-            weeklyTextBox.setText(String.format("%.2f", weekly))
-            monthlyTextBox.setText(String.format("%.2f", monthly))
+            hourlyTextBox.setText(String.format("Php %.2f", hourly))
+            dailyTextBox.setText(String.format("Php %.2f", daily))
+            weeklyTextBox.setText(String.format("Php %.2f", weekly))
+            monthlyTextBox.setText(String.format("Php %.2f", monthly))
         }
 
         resetBtn.setOnClickListener {
